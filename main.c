@@ -82,7 +82,10 @@ int main(int argc, char **argv) {
     }
 
     for (int i = 0; i < N; i++) {
-        fscanf(fp, "%d %d", &activities[i].s, &activities[i].f);
+	if (fscanf(fp, "%d %d", &activities[i].s, &activities[i].f) != 2) {
+		fprintf(stderr, "Invalid file format\n");
+		exit(1);
+    	}
     }
     fclose(fp);
 
